@@ -52,6 +52,7 @@ func (s *service) Register(server *grpc.Server) error {
 func (s *service) Get(ctx context.Context, req *api.GetContainerRequest) (*api.GetContainerResponse, error) {
 	var resp api.GetContainerResponse
 
+	//cyz-> 这会用到boltDB查询，并将container信息写入resp。
 	return &resp, errdefs.ToGRPC(s.withStoreView(ctx, func(ctx context.Context, store containers.Store) error {
 		container, err := store.Get(ctx, req.ID)
 		if err != nil {

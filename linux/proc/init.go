@@ -112,6 +112,7 @@ func New(context context.Context, path, workDir, runtimeRoot, namespace, criu st
 			return nil, errors.Wrapf(err, "failed to mount rootfs component %v", m)
 		}
 	}
+	//cyz-> 建立一个runc
 	runtime := NewRunc(runtimeRoot, path, namespace, r.Runtime, criu, systemdCgroup)
 	p := &Init{
 		id:       r.ID,
