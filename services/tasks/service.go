@@ -167,6 +167,7 @@ func (s *service) Start(ctx context.Context, r *api.StartRequest) (*api.StartRes
 	}
 	p := runtime.Process(t)
 	if r.ExecID != "" {
+		//cyz-> 在任务t中创建一个process。任务t是StartRequest中的ContainerID指定的task，process是StartRequest中ExecID指定的。
 		if p, err = t.Process(ctx, r.ExecID); err != nil {
 			return nil, errdefs.ToGRPC(err)
 		}

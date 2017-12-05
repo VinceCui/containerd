@@ -132,6 +132,7 @@ func New(context context.Context, path, workDir, runtimeRoot, namespace, criu st
 		IoUID:     int(options.IoUid),
 		IoGID:     int(options.IoGid),
 	}
+	//cyz-> 使用了策略模式.
 	p.initState = &createdState{p: p}
 	var (
 		err    error
